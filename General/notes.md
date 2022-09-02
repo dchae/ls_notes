@@ -1,0 +1,4 @@
+- Read through the entire course. Don't take any notes. Do the practice questions and quizzes.
+- Now do it all again, this time slowly and while taking notes. This leads to better notes and fewer unnecessary notes. Do the quizzes and practice questions again.
+- Make flashcards for any confusing concepts, missed quiz questions, practice questions, and any concepts that require memorizing lists.
+- Just before the assessment, read through everything, including my notes, one final time.
