@@ -1,2 +1,2 @@
-def double(n):
-    return n
+print("Input name: ", end="")
+print(f"Hello, {input()}")
