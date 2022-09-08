@@ -1,2 +1,6 @@
-print("Input name: ", end="")
-print(f"Hello, {input()}")
+import inspect
+
+
+a = input()
+a+="addition"
+if len(a): print(a)
