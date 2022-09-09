@@ -1,6 +1,7 @@
-import inspect
+hmp = {"a": 1, "b": 2}
+if 2 in hmp:
+    print("Searches values as well")
+else:
+    print("Only searches keys")
 
-
-a = input()
-a+="addition"
-if len(a): print(a)
+print(list(hmp.items()))

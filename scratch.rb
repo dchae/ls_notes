@@ -1,11 +1,4 @@
-def yield_name(name)
-  puts "In the method! Let's yield."
-  yield("Kim")
-  puts "In between the yields!"
-  yield(name)
-  puts "Block complete! Back in the method."
-end
-
-yield_name("Eric") { |n| puts "My name is #{n}." }
-
-# Now call the method with your name!
+my_array = ["raindrops", :kettles, "whiskers", :mittens, :packages]
+symbol_filter = lambda { |x| x.is_a? Symbol }
+symbols = my_array.select(&symbol_filter)
+p symbols
