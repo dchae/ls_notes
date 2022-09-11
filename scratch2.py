@@ -1,7 +1,10 @@
-hmp = {"a": 1, "b": 2}
-if 2 in hmp:
-    print("Searches values as well")
-else:
-    print("Only searches keys")
+a = 7
 
-print(list(hmp.items()))
+
+def add(b):
+    b = a + a
+    print(b)
+
+
+add(a)
+print(a)

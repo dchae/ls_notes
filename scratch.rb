@@ -1,4 +1,10 @@
-my_array = ["raindrops", :kettles, "whiskers", :mittens, :packages]
-symbol_filter = lambda { |x| x.is_a? Symbol }
-symbols = my_array.select(&symbol_filter)
-p symbols
+[1, 2, 3].each
+a = 7
+array = [1, 2, 3]
+
+array.each do |a|
+  a += 1
+  puts a
+end
+
+puts a
