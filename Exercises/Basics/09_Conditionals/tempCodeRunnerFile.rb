@@ -1,0 +1,1 @@
+{ green: "Go!", yellow: "Slow down!", red: "Stop!" }
