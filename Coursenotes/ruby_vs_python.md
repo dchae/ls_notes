@@ -391,3 +391,14 @@ Prefer `&&`, `||`, and `!` over `and`, `or`, and `not`.
     a = false or true  #=> true
     a  #=> false
 In the second case, a is assigned to false, because `=` has higher precedence than `or`.
+
+#### if expressions return value
+In Ruby, `if` expressions can return values
+
+    answer = if true
+                'yes'
+             else
+                'no'
+             end
+    puts answer
+    # => yes
