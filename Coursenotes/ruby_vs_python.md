@@ -402,3 +402,24 @@ In Ruby, `if` expressions can return values
              end
     puts answer
     # => yes
+
+#### Heredoc
+
+Wrapping a block of text in `<<-MSG...MSG` allows for multiline strings.
+```
+help = <<-MSG
+Enter operation:
+  add      (a)
+  subtract (s)
+  multiply (m)
+  divide   (d)
+MSG
+
+puts help
+# => 
+# Enter operation:
+#   add      (a)
+#   subtract (s)
+#   multiply (m)
+#   divide   (d)
+```

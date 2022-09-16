@@ -1,3 +1,5 @@
 # README
 
-Notes for Launch School by Daniel Chae
+Notes and Exercises for Launch School
+
+- Daniel Chae
