@@ -8,3 +8,13 @@
 ```
 3. `# => [4, 5, 3, 6]` First 4 is assigned to a; 6 to d, then 5 to b. Left to right by precedence of lacking default value.
 4. `a.bsearch { |x| x > 8 }`
+5. 
+```
+# => index error
+# => beats me
+# => 14
+```
+6. `# => 5, 8
+7. puts s.public_methods(false).inspect
+8. puts a.min(2)
+9. https://docs.ruby-lang.org/en/3.1/Psych.html#method-c-load_file
