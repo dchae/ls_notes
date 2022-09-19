@@ -1,10 +1,2 @@
-[1, 2, 3].each
-a = 7
-array = [1, 2, 3]
-
-array.each do |a|
-  a += 1
-  puts a
-end
-
-puts a
+arr = [1, 2, 3, 4, 5, 6]
+p arr.select.each_with_index { |v, i| i.odd? }

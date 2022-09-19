@@ -281,7 +281,8 @@ same as python
 `arr.delete_at(i)` equivalent to python `del arr[i]`
 `arr.delete(element)` equivalent to python `arr.remove(element)`
 `arr.uniq` equivalent to python `list(set(arr))`
-`arr.push(e)` equivalent to python `arr.append(e)`
+`arr.push(e)` and `arr << e` equivalent to python `arr.append(e)` (mutates arr, destructive)
+`arr + [e]` equivalent to python `arr + [e]` (returns copy, non-destructive)
 `arr.unshift(element)` equivalent to python `arr.insert(0, element)`
 `arr.include?(element)` equivalent to python `element in arr`
 `arr.flatten` roughly equivalent to python `[element for sublist in arr for element in sublist]`
@@ -291,6 +292,7 @@ same as python
 `arr.sort!` equivalent to python `arr.sort()`
 `arr.product` roughly equivalent to python `itertools.product`
 `[["test", "hello", "world"],["example", "mem"]]` == `[%w[test hello world], %w[example mem]]`
+
 
 #### .collect
 
@@ -422,4 +424,121 @@ puts help
 #   subtract (s)
 #   multiply (m)
 #   divide   (d)
+```
+
+#### tap
+Tap takes the calling object and passes it to the block argument, then returns the calling object (self).
+```
+(1..10).tap { |x| p x }                 # => 1..10
+.to_a.tap { |x| p x }                   # => [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+.select { |x| x.even? }.tap { |x| p x } # => [2, 4, 6, 8, 10]
+.map { |x| x * x }.tap { |x| p x }      # => [ 4, 16, 36, 64, 100]
+```
+
+#### Mutation vs Assignment
+Pretty much everything is the same as python. Python uses pass by _assignment_, "the parameter passed in is actually a reference to an object (but the reference is passed by value)". Looks like ruby does something similar.
+
+`[]=` is a mutating method.
+`arr[i] = new_val` mutates the calling object (arr).
+Can also think of `arr[i] = new_val` as assignment of the element at index `i` to new_val.
+Thus it is assignment of `arr[i]`, but mutation of `arr`.
+
+Same concept for setters.
+`person.name = "Bill"` is an assignment from the scope of the instance variable `person.name`, but a mutation from the scope of the `person` class object. 
+
+
+*Ruby's pass by is essentially pass by reference, with scoped assignment. Variables (x->2) passed into a function are essentially new variables (x'->2) within the methods scope, referencing the same objects. So they can mutate the original objects (x'->3 => x->3) or be reassigned to new objects (x'->3, x->2).*
+*We can't change the bindings of the original arguments passed into a method*
+Pass by reference: passes references to original objects
+Pass by value: passes copies of original objects
+Pass by reference value (ruby): passes copies of the references.
+- The method can use the copies of the references to mutate the object that the original variable references, but doesn't have access to the original variable itself and therefore cannot reassign it.
+
+
+
+##### Passing a function (Strict evaluation strategy)
+In python, you can pass a function as an argument to another function.
+
+```python
+def inner_function():
+    print('Inner function')
+ 
+def wrapper_function(function):
+    print('Wrapper function')
+    # function is a variable that contains function object
+    function() # inner function is called here
+ 
+wrapper_function(inner_function)
+# >> Wrapper function
+# >> Inner function
+
+```
+In ruby, the argument is evaluated first, reduced to an object, then passed to the function.
+```ruby
+def inner_function
+  puts 'Inner function'
+end
+ 
+def wrapper_function(function)
+  puts 'Wrapper function'
+  function
+end
+ 
+wrapper_function(inner_function) # inner_function is called here
+# => Inner function
+# => Wrapper function
+
+```
+Can use a block (or proc) to approximate the python function's behaviour.
+
+```ruby
+def inner_function
+  puts "Inner function"
+end
+
+def wrapper_function
+  puts "Wrapper function"
+  yield
+end
+
+wrapper_function { inner_function }
+# => Wrapper function
+# => Inner function
+
+# OR (with proc)
+
+def wrapper_function_proc(function)
+  puts "Wrapper function with proc"
+  function.call
+end
+
+func = Proc.new { inner_function }
+wrapper_function_proc(func)
+# => Wrapper function with proc
+# => Inner function
+
+```
+Looks like here, calling `inner_function` as a block/proc tells ruby to hold off on evaluating until we call it explicity in the `wrapper+function`.
+
+#### send
+`send(symbol [, args...]) → obj`
+Passes any given arguments to the method identified by *symbol*. A string passed to symbol will be converted to a symbol.
+```ruby
+x, y = 14, 7
+%w[+ - * / % **].each { |op| puts "#{x} #{op} #{y} = #{x.send(op, y)}" }
+# => 14 + 7 = 21
+# => 14 - 7 = 7
+# => 14 * 7 = 98
+# => 14 / 7 = 2
+# => 14 % 7 = 0
+# => 14 ** 7 = 105413504
+```
+Could also do this with reduce/inject
+```ruby
+
+%i[+ - * / % **].each { |op| puts "=> #{x} #{op} #{y} = #{[x, y].reduce(op)}" }
+```
+or `method`
+```ruby
+%i[+ - * / % **].each { |op| puts "=> #{x} #{op} #{y} = #{x.method(op).(y)}" }
 ```

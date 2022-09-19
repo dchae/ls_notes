@@ -1,1 +1,2 @@
-print(0 % 2)
+a = "  a  "
+print("." + a.strip() + ".")
