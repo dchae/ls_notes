@@ -1,9 +1,4 @@
-
-# def oddities(arr)
-#   arr.select.each_with_index { |v, i| !i.odd? }
-# end
-
-# # FE
-# def oddities(arr)
-#   arr.select.each_with_index { |v, i| i.odd? }
+def palindromic_number?(x)
+#   testcase = x.to_s
+#   return x == x.reverse
 # end
