@@ -1,2 +1,4 @@
-a = "  a  "
-print("." + a.strip() + ".")
+if False:
+    greeting = "hello, world"
+
+print(greeting)

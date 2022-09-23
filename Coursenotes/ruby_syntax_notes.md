@@ -542,3 +542,52 @@ or `method`
 ```ruby
 %i[+ - * / % **].each { |op| puts "=> #{x} #{op} #{y} = #{x.method(op).(y)}" }
 ```
+
+#### string slice
+`string[index, length]` equivalent to python `string[index: index + length]`
+- Ruby uses comma to separate two arguments, starting index and length of slice. 
+- Python uses colon to separate start index and non-inclusive end index.
+- Both languages allow chaining slice:
+```python
+# Python:
+s = "abcdef"
+print(s[1:4][0:2]) # >> bc
+```
+```ruby
+# Ruby:
+s = "abcdef"
+puts(s[1, 3][0, 2]) # => bc
+```
+#### array slice
+Returns array when given a range, returns element when given single index.
+```python
+a = [1, 2, 3, 4]
+print(a[3:4]) # >> [4]
+print(a[3])   # >> 4
+```
+```ruby
+a = [1, 2, 3, 4]
+p(a[3, 1]) # => [4]
+p(a[3..4]) # => [4]
+p(a[3])    # => 4
+```
+
+#### out of bounds slice index
+Python raises `IndexError`, Ruby returns nil.
+```python
+a = [1, 2, 3, 4]
+print(a[5]) # >> IndexError: list index out of range
+
+s = "1234"
+print(s[5]) # >> IndexError: string index out of range
+```
+```ruby
+a = [1, 2, 3, 4]
+p(a[5]) # => nil
+
+s = "1234"
+p(a[5]) # => nil
+
+# Ruby Array#fetch method to approximate Python behaviour:
+p(a.fetch(5)) # => IndexError: index 5 outside of array bounds
+```
