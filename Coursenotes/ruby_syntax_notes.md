@@ -569,6 +569,7 @@ print(a[3])   # >> 4
 a = [1, 2, 3, 4]
 p(a[3, 1]) # => [4]
 p(a[3..4]) # => [4]
+p(a[3..]) # => [4]
 p(a[3])    # => 4
 ```
 
@@ -590,4 +591,70 @@ p(a[5]) # => nil
 
 # Ruby Array#fetch method to approximate Python behaviour:
 p(a.fetch(5)) # => IndexError: index 5 outside of array bounds
+```
+
+#### Same line variable initialisation
+Wrapping the initialization of `n` in parentheses renders it available on the same line
+```ruby
+(n = 10).upto(n + 5).each { |x| p n * x }
+p n
+
+# Output:
+# 100
+# 110
+# 120
+# 130
+# 140
+# 150
+# 10
+```
+
+#### Ways to step
+```ruby
+# Range
+(0..10).step(2) { |x| p x }
+(0...11).step(2) { |x| p x }
+
+# Array
+array = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+array.each_slice(2) { |x, *_| p x }
+# OR
+(0...array.length).step(2).each { |i| p array[i] }
+
+# Numeric
+0.step(10, 2) { |x| p x }
+0.step(by: 2, to: 10) { |x| p x }
+
+# Output (for all):
+0
+2
+4
+6
+8
+10
+```
+#### Reduce
+Can pass object as argument to reduce to.
+```ruby
+def running_total(arr)
+  sum = 0
+  arr.reduce([]) { |res, x| res << (sum += x) }
+end
+# Can also just use int as the carryover object
+def running_total(arr)
+  res = []
+  arr.reduce(0) { |sum, x| sum += x; res << sum; sum }
+  res
+end
+
+running_total([2, 5, 13]) # => [2, 7, 20]
+```
+
+#### Digits
+Can specify base for digits method to return array of digits from smallest to greatest place.
+```ruby
+minutes = 125
+p minutes.digits(60)
+# => [5, 2]
+
 ```

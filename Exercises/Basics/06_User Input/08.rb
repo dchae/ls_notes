@@ -1,5 +1,5 @@
-def is_valid?(numstring)
-  return numstring.to_i.to_s == numstring
+def is_valid?(ns)
+  return ns.to_i.to_s == ns
 end
 
 def get_valid_num(query, nozero = false)
