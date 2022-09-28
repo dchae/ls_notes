@@ -1,3 +1,5 @@
-.each_with_index
-  # .map { |x, i| s[i] != s[i - 1] ? s[i] : "" }
-  # .join("")
+
+p length_split(
+    "To boldly go where no one has gone before. To boldly go where no one has gone before. To boldly go where no one has gone before. To boldly go where no one has gone before. To boldly go where no one has gone before. To boldly go where no one has gone before. ",
+  )
+p length_split("1")
