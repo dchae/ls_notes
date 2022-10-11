@@ -1,2 +1,3 @@
-
-p dms(76.73) == %(76°43'4
+ reverse!(a)
+  a.each_with_index { |v, i| a.unshift(a.delete_at(i)) }
+end
