@@ -658,3 +658,10 @@ p minutes.digits(60)
 # => [5, 2]
 
 ```
+#### Counter / Tally
+ruby tally roughly equivalent to python counter
+```ruby
+arr = [1, 2, 3, 3, 4, 5, 5, 5]
+arr.tally 
+#=> {1=>1, 2=>1, 3=>2, 4=>1, 5=>3}
+```
