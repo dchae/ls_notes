@@ -665,3 +665,53 @@ arr = [1, 2, 3, 3, 4, 5, 5, 5]
 arr.tally 
 #=> {1=>1, 2=>1, 3=>2, 4=>1, 5=>3}
 ```
+
+#### Array dup and clone
+Makes a copy of the array, referencing *the same objects* as the original array.
+```ruby
+# Mutating the duplicated array
+arr1 = ["a", "b", "c"]
+arr2 = arr1.dup # OR arr1[0..]
+arr2.map! do |char|
+  char.upcase
+end
+
+arr1 # => ["a", "b", "c"]
+arr2 # => ["A", "B", "C"]
+
+# Mutating the referenced objects
+arr1 = ["a", "b", "c"]
+arr2 = arr1.dup
+arr2.each do |char|
+  char.upcase!
+end
+
+arr1 # => ["A", "B", "C"]
+arr2 # => ["A", "B", "C"]
+
+```
+Python doesn't have this exact issue, because strings are not mutable in Python.
+
+```py
+arr1 = ["a", "b", "c"]
+arr2 = arr1[0:]
+
+for i, char in enumerate(arr2):
+    arr2[i] = char.upper()
+
+arr1 # >> ['a', 'b', 'c']
+arr2 # >> ['A', 'B', 'C']
+
+# Example of case where contents are mutable
+arr1 = [["a"], ["b"], ["c"]]
+arr2 = arr1[0:]
+
+for i, subarray in enumerate(arr2):
+    arr2[i][0] = subarray[0].upper()
+
+arr1 # >> [['A'], ['B'], ['C']]
+arr2 # >> [['A'], ['B'], ['C']]
+```
+Moral of the story, know whether you are mutating the array or the elements of the array.
+
+Same concept applies to `freeze`.
