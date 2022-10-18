@@ -32,8 +32,8 @@
 #   a.each_index.each_with_object(a[0..]) { |i, b| b[-i - 1] = a[i] }
 # end
 
-def reverse(a)
-  ((b = a[0..]).size / 2).times { |i| b[i], b[-i - 1] = a[-i - 1], a[i] }
+def reverse(arr)
+  ((b = arr[0..]).size / 2).times { |i| b[i], b[-i - 1] = arr[-i - 1], arr[i] }
   b
 end
 

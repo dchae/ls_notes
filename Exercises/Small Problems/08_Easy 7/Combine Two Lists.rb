@@ -35,7 +35,7 @@
 
 # One-liner with zip
 def interleave(a, b)
-  a.zip(b).flatten
+  arr.zip(b).flatten
 end
 
 p interleave([1, 2, 3], %w[a b c]) #== [1, "a", 2, "b", 3, "c"]

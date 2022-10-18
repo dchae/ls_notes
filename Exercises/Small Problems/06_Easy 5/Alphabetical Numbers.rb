@@ -24,7 +24,7 @@ NUMS =
     ],
   ).to_h
 def alphabetic_number_sort(arr)
-  arr.sort { |a, b| NUMS[a] <=> NUMS[b] }
+  arr.sort { |arr, b| NUMS[arr] <=> NUMS[b] }
 end
 
 # SOLUTION

@@ -7,8 +7,8 @@
 
 # OR
 def real_palindrome?(s)
-  a = s.gsub(/[^[:alnum:]]/, "").downcase
-  return a == a.reverse
+  arr = s.gsub(/[^[:alnum:]]/, "").downcase
+  return arr == arr.reverse
 end
 p real_palindrome?("madam") == true
 p real_palindrome?("Madam") == true # (case does not matter)

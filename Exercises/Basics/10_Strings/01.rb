@@ -1,4 +1,4 @@
-a = ""
+arr = ""
 # OR
 b = String.new()
-p a, b
+p arr, b

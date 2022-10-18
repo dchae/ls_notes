@@ -10,7 +10,7 @@ p palindrome?("356653") == true
 # FE
 
 def arr_palindrome?(a)
-  return a == a.reverse
+  return arr == arr.reverse
 end
 
 p arr_palindrome?([1, 2, 3, 2, 1]) == true

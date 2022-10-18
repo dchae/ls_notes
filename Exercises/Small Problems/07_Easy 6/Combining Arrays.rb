@@ -28,8 +28,8 @@
 # end
 
 require "set"
-def merge(a, b)
-  Set.new(a + b).to_a
+def merge(arr, b)
+  Set.new(arr + b).to_a
 end
 
 p merge([1, 3, 5], [3, 6, 9]) == [1, 3, 5, 6, 9]

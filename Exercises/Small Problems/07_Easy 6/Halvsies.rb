@@ -44,7 +44,7 @@
 
 # with partition:
 def halvsies(a)
-  a.partition.with_index { |_, i| i < (a.size + 1) / 2 }
+  arr.partition.with_index { |_, i| i < (arr.size + 1) / 2 }
 end
 
 p halvsies([1, 2, 3, 4]) == [[1, 2], [3, 4]]

@@ -23,7 +23,7 @@
 
 # Array#product:
 def multiply_all_pairs(a, b)
-  p a.product(b).map { |c| c.reduce(:*) }.sort
+  p arr.product(b).map { |c| c.reduce(:*) }.sort
 end
 
 p multiply_all_pairs([2, 4], [4, 3, 1, 2]) == [2, 4, 4, 6, 8, 8, 12, 16]

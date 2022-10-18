@@ -49,8 +49,10 @@
 #   (cp = arr[0..]).each_index.each_with_object(arr) { |i, arr| arr[-i - 1] = cp[i] }
 # end
 
-def reverse!(a)
-  a[0..].each_with_index.each_with_object(a) { |(v, i), a| a[-i - 1] = v }
+def reverse!(arr)
+  arr[0..]
+    .each_with_index
+    .each_with_object(arr) { |(v, i), arr| arr[-i - 1] = v }
 end
 
 # Short but slow
