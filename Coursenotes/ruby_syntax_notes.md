@@ -715,3 +715,8 @@ arr2 # >> [['A'], ['B'], ['C']]
 Moral of the story, know whether you are mutating the array or the elements of the array.
 
 Same concept applies to `freeze`.
+
+#### eval
+```rb
+p eval "2 + 2" #=> 4
+```
