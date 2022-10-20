@@ -34,9 +34,9 @@
 # end
 
 # recursive:
-base case: array len == 1
-  return single element
-return sum(arr) + recursive call(arr[0...-1])
+# base case: array len == 1
+#   return single element
+# return sum(arr) + recursive call(arr[0...-1])
 
 def sum_of_sums(a)
   a.empty? ? 0 : a.sum + sum_of_sums(a[0...-1])
