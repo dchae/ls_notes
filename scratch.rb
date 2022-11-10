@@ -1,21 +1,21 @@
-def balanced?(str)
-  left_side_count = str.count("(")
-  right_side_count = str.count(")")
-  return false if left_side_count != right_side_count
-  str
-    .chars
-    .each_with_object(only_par = []) do |item, obj|
-      obj << item if item == "(" || item == ")"
+def queue_time(customers, n)
+  customers
+    .each_with_object(Array.new(n, 0)) do |c, arr|
+      arr[(0...n).min_by { |i| arr[i] }] += c
     end
-  only_par[-1] == "(" || only_par[0] == ")" ? false : true
+    .max
 end
 
-p balanced?("())(()") == false
-p balanced?("What (is) this?") == true
-p balanced?("What is) this?") == false
-p balanced?("What (is this?") == false
-p balanced?("((What) (is this))?") == true
-p balanced?("((What)) (is this))?") == false
-p balanced?("Hey!") == true
-p balanced?(")Hey!(") == false
-p balanced?("What ((is))) up(") == false
+tests = [
+  [[], 1, 0],
+  [[5], 1, 5],
+  [[2], 5, 2],
+  [[1, 2, 3, 4, 5], 1, 15],
+  [[1, 2, 3, 4, 5], 100, 5],
+  [[2, 2, 3, 3, 4, 4], 2, 9],
+]
+
+tests.each do |customers, n, ans|
+  p res = queue_time(customers, n)
+  p res == ans
+end
