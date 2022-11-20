@@ -720,3 +720,10 @@ Same concept applies to `freeze`.
 ```rb
 p eval "2 + 2" #=> 4
 ```
+
+
+#### splat
+You can use splat operator `*` to implicitly convert range to array
+```rb
+[*1..3]
+# => [1, 2, 3]
