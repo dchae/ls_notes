@@ -67,3 +67,51 @@ end
 
 example('hello')
 ```
+On line 1 the method `example` is defined.
+On line 10 the method `example` is called with the string `"hello"` as an argument. We then execute the method as defined in line 1, passing the string `"hello"` into the `example` method as the argument `str`.
+On line 2, the local variable `i` is initialised and assigned to the integer `3` within the method definition.
+On line 3, the `loop` method is called with a `do..end` block that spans lines 3-7. On line 4 within the `do..end` block, the method `puts` is called with the argument `str`. On line 5, local variable `i` is decremented by 1. On line 6, the break keyword is invoked with a conditional such that we will break out of the loop if `i` is equal to 0.
+The code will print "hello" 3 times and return the default return value of the loop method, which is `nil`.
+
+This code demonstrates passing in arguments to a method, as well as using a conditional to break out of a loop.
+
+##### Example 5
+```ruby
+def greetings(str)  
+  puts str  
+  puts "Goodbye"
+end
+
+word = "Hello"
+greetings(word)
+```
+On line 1, the `greetings` method is defined with one parameter `str`.
+On line 6, the local variable `word` is initialised and assigned to the string `"Hello"`.
+On line 7, the `greetings` method is called with the argument `word`.
+On line 2, the `puts` method is called with the argument `str`. Since we have passed in `word` to the method, the string `"Hello"` is printed and `nil` is returned.
+On line 3, the `puts` method is called with the string argument `"Goodbye"`. "Goodbye" is printed and `nil` is returned.
+Since the last return value in the method execution was `nil`. the method invocation on line 7 returns `nil`.
+
+This code demonstrates passing in a variable to a method as an argument. Local variables defined outside of a method are accessible within the inner scope of a function when passed in as an argument.
+
+##### Example 6
+```ruby
+arr = [1, 2, 3, 4]
+counter = 0
+sum = 0
+
+loop do  
+  sum += arr[counter]  
+  counter += 1  
+  break if counter == arr.size
+end 
+
+puts "Your total is #{sum}"
+```
+On line 1, the local variable `arr` is initialised and assigned to the array `[1, 2, 3, 4]`.
+On line 2, the local variable `counter` is initialised and assigned to the integer 0.
+On line 3, the local variable `sum` is initialised and assigned to the integer 0.
+
+On line 5, the `loop` method is invoked with a `do..end` block spanning lines 5-9. On line 6, within the block, the local variable `sum` is incremented by the integer element of `arr` at index `counter`. On line 7, `counter` is incremented by one. On line 8, the `break` keyword is invoked with a conditional such that we will exit the loop if the local variable `counter` is equal to the return value of the `size` method called on `arr`. Since the `size` method returns the length of the array it is called on, the loop will iterate `arr.size` times, adding each integer element of `arr` to `sum` and returning `nil` after breaking.
+
+Since `sum` was initialised in the outer scope, it will be equal to the sum of `arr` after the loop finishes executing, which is 10. On line 11, `puts` method is called with `sum` interpolated into the string. It will print "Your total is 10" and return `nil`.

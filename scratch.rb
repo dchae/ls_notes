@@ -1,9 +1,11 @@
-a = 1
+arr = [1, 2, 3, 4]
+counter = 0
+sum = 0
+
 loop do
-  a = 2
-  b = 3
-  break
+  sum += arr[counter]
+  counter += 1
+  break if counter == arr.size
 end
 
-p a
-p b
+puts "Your total is #{sum}"
