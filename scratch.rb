@@ -1,11 +1,5 @@
-arr = [1, 2, 3, 4]
-counter = 0
-sum = 0
+lines = File.readlines("temp.txt")
+x = lines.map { |fn| fn.chomp("\n") }.join("|")
+res = "(" + x + ")"
 
-loop do
-  sum += arr[counter]
-  counter += 1
-  break if counter == arr.size
-end
-
-puts "Your total is #{sum}"
+File.write("res.txt", res)
