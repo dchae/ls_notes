@@ -1,5 +1,5 @@
-def transpose(matrix)
-  matrix[0].size.times.map { |i| matrix.size.times.map { |j| matrix[j][i] } }
+def transpose(m)
+  m[0].size.times.map { |i| m.size.times.map { |j| m[j][i] } }
 end
 
 p transpose([[1, 2, 3, 4]]) == [[1], [2], [3], [4]]
