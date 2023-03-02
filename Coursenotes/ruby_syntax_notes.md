@@ -720,3 +720,36 @@ Same concept applies to `freeze`.
 ```rb
 p eval "2 + 2" #=> 4
 ```
+
+
+#### splat
+You can use splat operator `*` to implicitly convert range to array
+```rb
+[*1..3]
+# => [1, 2, 3]
+```
+
+#### yield
+```ruby
+def greetings(str)
+  puts str
+  block_return = yield
+  puts block_return
+  puts "Goodbye"
+end
+
+word = "Hello"
+greetings(word) { "How are you?" }
+#=> Hello
+#=> How are you?
+#=> Goodbye
+
+def math(x, y)
+  puts yield(x, y)
+end
+
+math(4, 3) { |x, y| x * y }
+#=> 12
+math(2, 4) { |x, y| x - y }
+#=> -2
+```
