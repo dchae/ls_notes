@@ -34,7 +34,7 @@
 #   n = arr.size
 #   while n > 1
 #     unsorted = 0
-#     (arr.size - 1).times do |i|
+#     n.times do |i|
 #       a, b = arr[i], arr[i + 1]
 #       if b < a
 #         arr[i], arr[i + 1] = b, a
