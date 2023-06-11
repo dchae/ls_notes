@@ -37,11 +37,9 @@
 # end
 
 # FE
-# def triangle(n, o = 0)
-#   n.times { |i| puts ("*" * (o < 2 ? (n - i) : i + 1)).rjust(o.odd? ? n : 0).ljust(o.odd? ? 0 : n) }
-# end
-
-# triangle(9)
+def triangle(n, o = 0)
+  n.times { |i| puts ("*" * (o < 2 ? (n - i) : i + 1)).rjust(o.odd? ? n : 0).ljust(o.odd? ? 0 : n) }
+end
 
 4.times do |o|
   puts "Orientation ##{o}\n\n"
