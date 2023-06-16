@@ -31,18 +31,19 @@
 # end
 
 # def bubble_sort!(arr)
-#   n = arr.size
-#   while n > 1
-#     unsorted = 0
-#     n.times do |i|
+#   unsorted = arr.size - 1
+#   while unsorted > 0
+#     last_sorted = 0
+#     unsorted.times do |i|
 #       a, b = arr[i], arr[i + 1]
 #       if b < a
 #         arr[i], arr[i + 1] = b, a
-#         unsorted = i
+#         last_sorted = i
 #       end
 #     end
-#     n = unsorted
+#     unsorted = last_sorted
 #   end
+#   arr
 # end
 
 # def bubble_sort!(arr)
@@ -60,3 +61,8 @@ p array == [1, 2, 4, 6, 7]
 array = %w[Sue Pete Alice Tyler Rachel Kim Bonnie]
 bubble_sort!(array)
 p array == %w[Alice Bonnie Kim Pete Rachel Sue Tyler]
+
+p 100.times.all? do |_|
+  arr = (0..100).to_a.shuffle
+  bubble_sort!(arr) == (0..100).to_a
+end
