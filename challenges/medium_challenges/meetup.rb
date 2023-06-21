@@ -17,8 +17,7 @@ class Meetup
     when "last"
       res = res + 7 while res.month == (res + 7).month
     else
-      i = (%w[first second third fourth fifth].index(ordinal.downcase))
-      res = res + i * 7
+      res += (%w[first second third fourth fifth].index(ordinal.downcase)) * 7
     end
 
     res.month == @month ? res : nil
