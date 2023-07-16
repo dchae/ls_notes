@@ -1,6 +1,6 @@
 class Clock
   def self.at(hh, mm = 0)
-    self.new(hh * 60 + mm)
+    new((hh * 60) + mm)
   end
 
   def initialize(minutes)
@@ -8,15 +8,15 @@ class Clock
   end
 
   def ==(other)
-    self.val == other.val
+    val == other.val
   end
 
   def +(add)
-    self.class.new(self.val + add)
+    self.class.new(val + add)
   end
 
   def -(add)
-    self.+(-add)
+    self + (-add)
   end
 
   def to_s
